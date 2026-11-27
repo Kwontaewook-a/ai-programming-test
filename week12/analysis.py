@@ -21,7 +21,7 @@ def 정제(df):
 
     # 4. 0~100 범위의 정수 점수만 남김
     점수 = pd.to_numeric(df["점수"], errors="coerce")
-    유효점수 = 점수.between(0, 1000) & 점수.mod(1).eq(0)
+    유효점수 = 점수.between(0, 100) & 점수.mod(1).eq(0)
     df = df.loc[유효점수].copy()
     df["점수"] = 점수.loc[유효점수].astype(int)
     print(f"유효 점수 필터링 후: {len(df)}행")
